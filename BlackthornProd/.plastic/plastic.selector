@@ -1,0 +1,4 @@
+repository "BlackthornProd@narutohunter@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"

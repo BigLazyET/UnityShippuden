@@ -1,0 +1,332 @@
+{
+    "root": {
+        "data": {
+            "id": "cn12gxxx22g0",
+            "created": 1663660620116,
+            "text": "SpriteAtlas",
+            "hyperlink": "https://zhuanlan.zhihu.com/p/456101373",
+            "hyperlinkTitle": "SpriteAtlas"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "cn12j7bawcw0",
+                    "created": 1663660797245,
+                    "text": "基本概念",
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cn13gc5dwk80",
+                            "created": 1663663393788,
+                            "text": "将多个纹理合成一个大纹理，可以有效减少DrawCall的次数"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cn12jhuw9b40",
+                    "created": 1663660820197,
+                    "text": "打包图集",
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cn12mblh8yw0",
+                            "created": 1663661041660,
+                            "text": "安装2D Sprite插件",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cn12obi21xc0",
+                                    "created": 1663661198181,
+                                    "text": "Window -> Package Manager",
+                                    "font-style": "italic",
+                                    "layout": null,
+                                    "priority": 1
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cn12p10das80",
+                                    "created": 1663661253708,
+                                    "text": "Packages选择为Unity Registry",
+                                    "font-style": "italic",
+                                    "layout": null,
+                                    "priority": 2
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cn12p80563k0",
+                                    "created": 1663661268932,
+                                    "text": "搜索2D Sprite并且下载",
+                                    "font-style": "italic",
+                                    "layout": null,
+                                    "priority": 3
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cn12mq1g6ow0",
+                            "created": 1663661073100,
+                            "text": "开启图集打包功能",
+                            "note": "Edit -> Project Settings -> Editor -> Sprite Packer-> Mode",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cn12qfcon540",
+                                    "created": 1663661363292,
+                                    "text": "Mode",
+                                    "font-weight": "bold",
+                                    "layout": null,
+                                    "priority": null,
+                                    "progress": null,
+                                    "note": "Sprite Atlas在不断更新中"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cn12r8lyym00",
+                                            "created": 1663661426980,
+                                            "text": "Disabled",
+                                            "font-style": "italic",
+                                            "layout": null
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cn12razyqo00",
+                                            "created": 1663661432180,
+                                            "text": "Sprite Atlas V1 - Enabled For Builds",
+                                            "font-style": "italic",
+                                            "layout": null,
+                                            "note": "仅当发布（Build）的时候构建图集，在Editor和Play模式中引用原始纹理而非图集中的纹理"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cn12rcx6l0g0",
+                                            "created": 1663661436365,
+                                            "text": "Sprite Atlas V1 - Always Enabled",
+                                            "layout": null,
+                                            "font-style": "italic",
+                                            "note": "在运行时（Build和Play模式）引用图集中的纹理，在Editor模式中引用原始纹理"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cn12rdu4kxc0",
+                                            "created": 1663661438357,
+                                            "text": "Sprite Atlas V2 (Experimental) - Enabled",
+                                            "layout": null,
+                                            "font-style": "italic",
+                                            "note": "Sprite Atlas V1 不支持缓存服务器（Cache Server），Unity只能将打包的图集数据存储在Library/AtlasCache文件夹中，并且也不能有依赖项，不支持命名对象导入器（named objects importer），而Sprite Atlas V2提供了对上述功能的支持",
+                                            "progress": 5
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cn12n81qwq80",
+                            "created": 1663661112300,
+                            "text": "新建图集",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cn131bndbmw0",
+                                    "created": 1663662217236,
+                                    "text": "目标目录下右键 -> Create -> 2D -> Sprite Atlas"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cn12nqd5zig0",
+                            "created": 1663661152173,
+                            "text": "图集属性",
+                            "layout": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cn133jicu1s0",
+                                    "created": 1663662391076,
+                                    "text": "图集类型-Type"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cn133ro6uug0",
+                                            "created": 1663662408844,
+                                            "text": "主图集 - Master"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cn133sjkf1c0",
+                                            "created": 1663662410740,
+                                            "text": "变体图集 - Variant",
+                                            "note": "可以理解为继承自主图集\nMaster Atlas：设置主图集内容的副本作为自己的内容。\nScale：设置变体图集的缩放因子，介于0.1~1之间"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "cn1353wgxug0",
+                                                    "created": 1663662513829,
+                                                    "text": "目的：创建与主图集不同分辨率的图集"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cn1370qj1qo0",
+                                    "created": 1663662663668,
+                                    "text": "打包运行设置 - Include in build",
+                                    "note": "如果只要用到变体图集的纹理，可以将变体图集的Include in build勾选；主图集的此配置不要勾选"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cn137eyfyug0",
+                                            "created": 1663662694621,
+                                            "text": "Unity在打包的项目中会包含图集，并且在运行时自动加载它们",
+                                            "font-style": "italic"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cn137nq3f2o0",
+                                            "created": 1663662713708,
+                                            "text": "Unity仍会将图集打包到项目Assets文件夹中的** .spriteatlas * 文件中，只是运行的时候不会加载到内存中",
+                                            "font-style": "italic"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cn12jl6d2jc0",
+                    "created": 1663660827421,
+                    "text": "加载图集",
+                    "layout": null,
+                    "note": "图集可以放在Resources文件夹中加载，也可以打包到AssetBundle中进行加载"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cn13974gtc80",
+                            "created": 1663662834300,
+                            "text": "Resources文件夹加载",
+                            "note": "SpriteAtlas atlas = Resources.Load<SpriteAtlas>(\"FirstAtlas\");  //图集名称\nSprite message = atlas.GetSprite(\"Message\");    //精灵体名称\nSprite lovely = atlas.GetSprite(\"Lovely\");\n\nfirstImg.sprite = message;\nsecondImg.sprite = lovely;"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cn13afzt15c0",
+                            "created": 1663662931973,
+                            "text": "AssetBundle(AB包)加载",
+                            "note": "//AB包保存路径及名称\nAssetBundle bundle = AssetBundle.LoadFromFile(Application.streamingAssetsPath + @\"\\AssetBundles\\myatlas\");\n//从AB包中加载图集\nSpriteAtlas atlas = bundle.LoadAsset<SpriteAtlas>(\"FirstAtlas\");"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cn13bh16ab40",
+                            "created": 1663663012597,
+                            "text": "后期绑定(理解为即用即加)",
+                            "note": "一个图集如果没有勾选Include in Build选项，只能通过后期绑定来加载里面的Sprite。所谓后期绑定，就是Unity在加载资源时，对于引用到的Sprite，Unity由于不知道Sprite和图集的引用关系，所以会发送一个请求加载这个Sprite的事件。使用者需要监听这个事件（即SpriteAtlasManager.atlasRequested回调），然后把这个Sprite所属的图集返回给Unity。这也就意味着，使用者需要自己加载图集"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cn13e2dbns00",
+                                    "created": 1663663215772,
+                                    "text": "event Action<string, Action<SpriteAtlas>> atlasRequested",
+                                    "priority": 1
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cn13e8ow8uw0",
+                                    "created": 1663663229532,
+                                    "text": "event Action<SpriteAtlas> atlasRegistered",
+                                    "priority": 2
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cn13ereblzc0",
+                                    "created": 1663663270252,
+                                    "text": "SpriteAtlasManager.atlasRequested += RequestAtlas",
+                                    "priority": 3,
+                                    "note": "private void RequestAtlas(string atlasName, Action<SpriteAtlas> callback)\n{\n    //获取指定图集并且调用委托\n    //具体代码根据项目决定，我是将图集放在Resources文件夹\n    var sa = Resources.Load<SpriteAtlas>(atlasName);\n    callback(sa);\n}"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cn12jpd1e2o0",
+                    "created": 1663660836532,
+                    "text": "优缺点",
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cn13fm3qgzs0",
+                            "created": 1663663337092,
+                            "text": "寻找内存消耗和DrawCall调用之间的平衡"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "right",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
