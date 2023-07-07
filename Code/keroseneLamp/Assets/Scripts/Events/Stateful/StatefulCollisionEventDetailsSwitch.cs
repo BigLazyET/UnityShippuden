@@ -4,6 +4,6 @@ namespace Events
 {
     public struct StatefulCollisionEventDetailsSwitch : IComponentData
     {
-        public bool calculateDetails;
+        public bool isCalculateDetails;
     }
 }

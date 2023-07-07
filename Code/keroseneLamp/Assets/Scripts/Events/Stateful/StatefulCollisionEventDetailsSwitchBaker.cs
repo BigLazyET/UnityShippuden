@@ -9,7 +9,7 @@ namespace Assets.Scripts.Events.Stateful
         {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
             if (authoring.CalculateDetails)
-                AddComponent(entity, new StatefulCollisionEventDetailsSwitch { calculateDetails = authoring.CalculateDetails });
+                AddComponent(entity, new StatefulCollisionEventDetailsSwitch { isCalculateDetails = authoring.CalculateDetails });
             AddBuffer<StatefulCollisionEvent>(entity);
         }
     }
