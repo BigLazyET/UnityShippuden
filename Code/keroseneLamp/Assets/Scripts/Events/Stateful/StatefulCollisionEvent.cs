@@ -15,14 +15,14 @@ namespace Events
 
         public int BodyIndexB { get; set; }
 
-        public ColliderKey ColliderKeyA { get; }
+        public ColliderKey ColliderKeyA { get; set; }
 
-        public ColliderKey ColliderKeyB { get; }
+        public ColliderKey ColliderKeyB { get; set; }
 
         public StatefulEventState State { get; set; }
 
         // EntityA point to EntityB
-        public float3 normal;
+        public float3 Normal;
 
         // Only if CalculateDetails is checked on StatefulCollisionEventDetailsSwitch of selected entity,
         // this field will have valid value, otherwise it will be zero initialized
@@ -37,7 +37,7 @@ namespace Events
             ColliderKeyA = collisionEvent.ColliderKeyA;
             ColliderKeyB = collisionEvent.ColliderKeyB;
             State = default;
-            normal = collisionEvent.Normal;
+            Normal = collisionEvent.Normal;
             CollisionDetails = default;
         }
 
@@ -52,7 +52,7 @@ namespace Events
         public float3 GetNormalFrom(Entity entity)
         {
             Assert.IsTrue((entity == EntityA) || (entity == EntityB));
-            return math.select(-normal, normal, entity == EntityB);
+            return math.select(-Normal, Normal, entity == EntityB);
         }
 
         public bool TryGetDetails(out Details details)
