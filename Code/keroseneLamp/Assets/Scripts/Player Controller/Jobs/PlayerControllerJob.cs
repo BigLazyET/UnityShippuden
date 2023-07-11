@@ -103,7 +103,7 @@ namespace PlayerController
                 NativeList<StatefulCollisionEvent> currentFrameCollisionEvents = 
                     playerController.RaiseCollisionEvents != 0 ? new NativeList<StatefulCollisionEvent>(Allocator.Temp) : default;
                 NativeList<StatefulTriggerEvent> currentFrameTriggerEvents = 
-                    playerController.RaiseTriggerEvents != 0 ? new NativeList<StatefulTriggerEvent> : default;
+                    playerController.RaiseTriggerEvents != 0 ? new NativeList<StatefulTriggerEvent>(Allocator.Temp) : default;
             }
 
             DeferredImpulseWriter.EndForEachIndex();
