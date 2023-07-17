@@ -66,9 +66,9 @@ namespace AI.FSM
                 return;
             }
 
-            if (states.ContainsKey(stateId))
+            if (!states.ContainsKey(stateId))
             {
-                Debug.LogError($"FsmSystem map already contains stateId:{stateId}");
+                Debug.LogError($"FsmSystem map not contains stateId:{stateId}");
                 return;
             }
 
