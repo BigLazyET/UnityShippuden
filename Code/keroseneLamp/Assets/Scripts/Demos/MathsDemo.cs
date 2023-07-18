@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-namespace Assets.Scripts.Maths
+namespace Assets.Scripts.MathsDemo
 {
     public class MathsDemo : MonoBehaviour
     {
@@ -13,13 +12,15 @@ namespace Assets.Scripts.Maths
             // Unity坐标系采用左手法则：https://blog.csdn.net/weixin_43147385/article/details/124230124
 
             // 点乘可以判断出目标物体在我的前方还是后方。大于零在前方，小于零在后方。
-            // 点乘可以用来计算夹角余弦值。
+            // 点乘可以用来计算夹角余弦值 => 有了角度我们就可以做矩形(向量差在X/Y轴上的投影)或扇形(余弦算出角度)索敌AI等
             // 叉乘可以判断出目标物体在我的左边还是右边。大于零在右方，小于零在左方。还可以判断在物体内部或者外部。
             // 叉乘可以用来计算平面法向量
             // 点乘求角度，叉乘求方向
             // 比如敌人再附近，点乘可以求出玩家面朝方向和敌人方向的夹角，叉乘可以得出左转还是右转更好的转向敌人
 
             RotateDemo(transformA);
+
+            CalcuateDistance(transformA, transformB);
 
             LookAtDemo(transformA, transformB);
 
@@ -30,9 +31,6 @@ namespace Assets.Scripts.Maths
 
             // A -> B 的方向及单位向量
             var direction = (transformB.position - transformA.position).normalized;
-
-            // A 到 B 的距离
-            var distance = Vector3.Distance(transformA.position, transformB.position);
 
             // A 向 B 进行移动
             transformA.position += direction * Time.deltaTime * 5;   // speed: 5
@@ -52,6 +50,15 @@ namespace Assets.Scripts.Maths
 
             rotation = Quaternion.AngleAxis(30, Vector3.up);    // 创建一个基于Vector3.up(Y轴)旋转30度的旋转
             transformA.rotation *= rotation;
+        }
+
+        private void CalcuateDistance(Transform transformA, Transform transformB)
+        {
+            // A 到 B 的距离
+            var distance = Vector3.Distance(transformA.position, transformB.position);
+
+            var relativePos = transformB.position - transformA.position;
+            distance = relativePos.magnitude;
         }
 
         private void LookAtDemo(Transform transformA, Transform transformB)
