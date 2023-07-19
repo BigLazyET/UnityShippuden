@@ -1,0 +1,7 @@
+﻿# ScriptableObject
+
+## 参考链接
+* [官方](https://docs.unity3d.com/2018.4/Documentation/Manual/class-ScriptableObject.html)
+* [应用](https://blog.csdn.net/Vitens/article/details/118004351)
+
+* 可将数据存储为工程的资源文件,和一般的json与xml等数据文件比起来,他的可视化就好太多了,直接能在Inspector面板看到数据,类似这样的

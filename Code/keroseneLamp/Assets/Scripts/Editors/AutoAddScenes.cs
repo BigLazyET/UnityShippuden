@@ -27,9 +27,8 @@ namespace Assets.Scripts.Editors
                 new EditorBuildSettingsScene("Assets/Scenes/2.unity", false),
                 new EditorBuildSettingsScene("Assets/Scenes3.unity", false),
 
-            };
+                };
             }
-
         }
     }
 }
