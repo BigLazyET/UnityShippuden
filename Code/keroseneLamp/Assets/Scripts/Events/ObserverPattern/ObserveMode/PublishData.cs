@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Archive
+namespace Assets.Scripts.Events
 {
-    internal class Class1
+    public class PublishData
     {
+        public int Age { get; set; }
     }
 }

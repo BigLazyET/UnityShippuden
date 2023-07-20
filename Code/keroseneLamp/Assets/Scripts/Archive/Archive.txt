@@ -4,3 +4,7 @@
 * the items of Inventroy or Bag - items counts/status and so on...
 * the interactive status - the opened boxs or the opened charactor dialogue and so on...
 * the charactor skills
+
+## How to Archived
+* A Singleton Holds the all status
+* Every Scene load/unload needs to be read/write/save status
