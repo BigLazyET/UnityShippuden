@@ -209,6 +209,56 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "NpcInteractive",
+            "id": "368c1b17-1ced-490c-b46c-943a3d09c321",
+            "actions": [
+                {
+                    "name": "Dialogue",
+                    "type": "Value",
+                    "id": "e0a2f8fe-ceaf-4c18-8521-f389d09fcb8a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0b999c10-1b57-4036-8a7f-8542a3967b7a",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a6c3de8-5996-4a22-a0a2-22c838b93127",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68681ef0-ae70-4613-8a5d-13cf82800d16",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
