@@ -1,0 +1,20 @@
+﻿# InputSystem
+
+## 官方扩展
+可以用来做一些骚操作，包括更改案件绑定、对修改的按键进行保存和重新载入等等
+
+### InputActionSetupExtensions
+https://docs.unity3d.com/Packages/com.unity.inputsystem@1.3/api/UnityEngine.InputSystem.InputActionSetupExtensions.html
+
+更改 InputAction、InputActionMap、 和InputActionAsset对象
+
+此处的方法包括 通常是破坏性的，即它们会重新排列数据以用于操作
+
+### InputActionRebindingExtensions
+https://docs.unity3d.com/Packages/com.unity.inputsystem@1.3/api/UnityEngine.InputSystem.InputActionRebindingExtensions.html
+
+帮助动态重新绑定输入操作的扩展 各种方式
+
+在正常游戏操作期间调用，即作为屏幕的一部分，用户是否可以重新绑定 控制。
+
+这些扩展的两个主要职责是应用非破坏性的绑定重写 重定向现有绑定，并通过侦听控件来促进用户控制的重新绑定 由用户驱动

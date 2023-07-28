@@ -9,7 +9,7 @@ namespace Assets.Scripts.Editors
     [InitializeOnLoad]
     public class AutoAddScenes
     {
-        // 注意一定要是静态方法
+        // 静态构造
         static AutoAddScenes()
         {
 

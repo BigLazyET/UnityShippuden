@@ -1,52 +1,42 @@
-﻿using System;
+﻿using Assets.Scripts.Enums;
+using System;
 using System.Collections.Concurrent;
-using System.Threading;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Assets.Scripts.Events.ObserveLikeModeUpgrade
 {
-    public class FooEventSource
+    public class FooEventSource<T> : FooEventSourceBase<T>
     {
-        Foo _lastArgs;  // 用作判定是否需要执行Fire
-
-        readonly ConcurrentBag<Action<Foo>> _observers = new ConcurrentBag<Action<Foo>>();
-
-        public void Subscribe(Action<Foo> observer)
+        public override void Subscribe(EventName eventName, Func<T, Task> observer)
         {
-            var lastArgs = Volatile.Read(ref _lastArgs);
-            if (lastArgs != null) observer(lastArgs);
-
-            _observers.Add(observer);
+            observers[eventName] = observer;
         }
 
-        public void FireEventIfUpdated(Foo foo)
+        public override void UnSubscribe(EventName eventName)
         {
-            if (!CheckIsNeedUpdate(foo)) return;
-            foreach (var observer in _observers) observer(_lastArgs);
+            observers.TryRemove(eventName, out _);
         }
 
-        public void FireEventTaskDeleted()
+        public override void FireEventIfUpdated(T parameters) => FireEventIfUpdated(parameters, null);
+
+        public override void FireEventIfUpdated(T parameters, params EventName[] eventNames)
         {
-            _lastArgs = new Foo { IsExist = false };
-            foreach (var observer in _observers) observer(_lastArgs);
+            Task.Run(async () =>
+            {
+                foreach (var observer in observers)
+                {
+                    if (eventNames != null && !eventNames.Contains(observer.Key))
+                        continue;
+                    
+                    await observer.Value(parameters);
+                }
+            });
         }
 
         public void Reset()
         {
-            _lastArgs = null;
-            _observers.Clear();
+            observers.Clear();
         }
-
-        private bool CheckIsNeedUpdate(Foo foo)
-        {
-            // 如果取不到当前的话，就保留上一个不更新
-            if (foo == null) return false;
-
-            // TODO: compare to decide need update or not
-
-
-            _lastArgs = foo;
-            return true;
-        }
-
     }
 }

@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Assets.Scripts.Enums;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Scene
 {
     /// <summary>
-    /// 
+    /// 道具物品对象
     /// </summary>
     [Serializable]
-    public class ItemDetails : ScriptableObject
+    public class ItemDetails
     {
-        public ItemName itemName;
+        public ItemType itemType;
 
         public string itemDisplayName;
 

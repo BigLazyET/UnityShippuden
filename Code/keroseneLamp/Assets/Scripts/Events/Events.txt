@@ -1,0 +1,31 @@
+﻿# Events
+
+## 1. EventSystem vs InputSystem
+
+* [unity inputsystem eventsystem](https://juejin.cn/s/unity%20inputsystem%20eventsystem)
+
+## 2. EventSystem
+
+[UnityUI EventSystem](https://juejin.cn/post/7090748193360576542)
+用于处理 UI 事件的系统。它提供了处理各种 UI 事件的框架，如点击、拖动等，并且可以自定义 UI 事件的处理方式
+
+### 2.1 EventSystem + UGUI
+
+在Unity中创建UI元素时，总会自动生成一个EventSystem物体，它包含三个组件：Transform、EventSystem、Standalone Input Module
+
+如果要将UI事件传给InputSystem，必须将Standalone Input Module 更换为 Input System UI Input Module
+(UI Input Module 项可以通过指定一个 InputSystemUIInputModule 对象来与 UI 协作)
+([Input System UI Input Module](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/UISupport.html))
+
+## 3. InputSystem
+
+[Unity 新 InputSystem 的简要使用](https://juejin.cn/post/6844904063260164110)
+用于管理和处理游戏中的输入事件。它可以处理各种输入设备，包括键盘、鼠标、手柄等，而且能够处理多种不同的输入类型，如按下、松开、滚动等
+
+### 3.1 InputSystem使用方式
+[Input System新输入系统（一）](https://blog.csdn.net/weixin_61427881/article/details/130556928)
+
+* 直接从设备对应类中获取输入
+* 代码创建Custom-InputAction来获取输入 - 必须手动在代码里Enable
+* 通过添加PlayerInput到 Game Object 上作为组件使用来获取输入 - 这一步需要在Editor配置Input Action Asset，Behavior等等
+* 用Input Action Asset生成C#代码获取输入 - 需要创建Input Action Asset资源，并勾选Generate C# Class - 必须手动在代码里enable
