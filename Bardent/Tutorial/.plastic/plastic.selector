@@ -1,4 +1,0 @@
-repository "Tutorial@narutohunter@cloud.cn"
-  path "/"
-    br "/main"
-    co "/main"
