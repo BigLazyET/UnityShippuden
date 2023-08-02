@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
     public class PlayerStateMachine
     {
-        public IDictionary<PlayerStateType, PlayerState> playerStats = new Dictionary<PlayerStateType, PlayerState>();
+        public IDictionary<PlayerStateType, PlayerState> playerStates = new Dictionary<PlayerStateType, PlayerState>();
 
         public PlayerState CurrentState { get; private set; }
 
@@ -23,25 +24,25 @@ namespace Assets.Scripts.Player
                 return;
             }
 
-            if (playerStats.ContainsKey(state.PlayerStateType))
+            if (playerStates.ContainsKey(state.PlayerStateType))
             {
                 Debug.LogError($"FsmSystem map already contains stateId:{state.PlayerStateType}");
                 return;
             }
 
             //states[state.StateId] = state;
-            playerStats.Add(state.PlayerStateType, state);
+            playerStates.Add(state.PlayerStateType, state);
         }
 
         public void RemoveState(PlayerStateType playerStateType)
         {
-            if (!playerStats.ContainsKey(playerStateType))
+            if (!playerStates.ContainsKey(playerStateType))
             {
                 Debug.LogError($"FsmSystem map not contains stateId:{playerStateType}");
                 return;
             }
 
-            playerStats.Remove(playerStateType);
+            playerStates.Remove(playerStateType);
         }
 
         public void Initialize(PlayerState startingState)
@@ -58,17 +59,19 @@ namespace Assets.Scripts.Player
                 return;
             }
 
-            if (!playerStats.ContainsKey(playerStateType))
+            if (!playerStates.ContainsKey(playerStateType))
             {
                 Debug.LogError($"FsmSystem map not contains stateId:{playerStateType}");
                 return;
             }
 
-            var newState = playerStats[playerStateType];
+            var newState = playerStates[playerStateType];
 
             CurrentState.Exit();
             CurrentState = newState;
             CurrentState.Enter();
         }
+
+        public T GetState<T>() where T : PlayerState => playerStates.Values.OfType<T>().FirstOrDefault() ?? default(T);
     }
 }

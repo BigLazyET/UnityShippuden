@@ -4,6 +4,10 @@ using Assets.Scripts.SO;
 
 namespace Assets.Scripts.Player
 {
+    /// <summary>
+    /// 所有可以在地面进行的状态的基状态
+    /// 具体相关的状态由：Idle, Land, Move, CrouchIdle, CrouchMove
+    /// </summary>
     public class PlayerGroundedState : PlayerState
     {
         // 输入相关 - 由 PlayerInputHandler负责
@@ -19,11 +23,9 @@ namespace Assets.Scripts.Player
         private bool isTouchingLedge;
         protected bool isTouchingCelling;
 
-        private Movement movement;
-        protected Movement Movement => movement ?? core.GetCoreComponent<Movement>();
+        protected virtual Movement Movement => Movement ?? core.GetCoreComponent<Movement>();
 
-        private CollisionSenses collisionSenses;
-        protected CollisionSenses CollisionSenses => collisionSenses ?? core.GetCoreComponent<CollisionSenses>();
+        protected CollisionSenses CollisionSenses => CollisionSenses ?? core.GetCoreComponent<CollisionSenses>();
 
         public override PlayerStateType PlayerStateType => PlayerStateType.Grounded;
 
@@ -65,9 +67,9 @@ namespace Assets.Scripts.Player
             dashInput = player.InputHandler.DashInput;
 
             if (player.InputHandler.AttackInputs[((int)CombatInputs.Primary)] && !isTouchingCelling)
-                playerStateMachine.ChangeState(PlayerStateType.PrimaryAttack);
+                stateMachine.ChangeState(PlayerStateType.PrimaryAttack);
             if (player.InputHandler.AttackInputs[((int)CombatInputs.Secondary)] && !isTouchingCelling)
-                playerStateMachine.ChangeState(PlayerStateType.SecondaryAttack);
+                stateMachine.ChangeState(PlayerStateType.SecondaryAttack);
 
         }
 

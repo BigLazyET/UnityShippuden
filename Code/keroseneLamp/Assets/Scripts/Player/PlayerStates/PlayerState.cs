@@ -1,24 +1,23 @@
 ﻿using Assets.Scripts.SO;
+using UnityEngine;
 using CoreNs = Assets.Scripts.Core; 
 
 namespace Assets.Scripts.Player
 {
     public abstract class PlayerState
     {
-        public abstract PlayerStateType PlayerStateType { get; }
-
+        private string animBoolName;
+        
         protected CoreNs.Core core;
-
         protected Player player;
         protected PlayerDataSO playerDataSO;
-        protected PlayerStateMachine playerStateMachine;
+        protected PlayerStateMachine stateMachine;
 
         protected bool isAnimationFinished;
         protected bool isExitingState;
-
         protected float startTime;
 
-        private string animBoolName;
+        public abstract PlayerStateType PlayerStateType { get; }
 
         public PlayerState(Player player, PlayerDataSO playerDataSO, PlayerStateMachine playerStateMachine, string animBoolName)
         {
@@ -26,20 +25,33 @@ namespace Assets.Scripts.Player
             this.animBoolName = animBoolName;
             this.player = player;
             this.playerDataSO = playerDataSO;
-            this.playerStateMachine = playerStateMachine;
+            this.stateMachine = playerStateMachine;
         }
 
         public virtual void Enter()
         {
+            DoChecks();
 
+            player.Animator.SetBool(animBoolName, true);
+
+            startTime = Time.time;
+            isExitingState = false;
+            isAnimationFinished = false;
         }
 
-        public virtual void Exit() { }
+        public virtual void Exit() 
+        {
+            player.Animator.SetBool(animBoolName, false);
+            isExitingState = true;
+        }
 
         public virtual void LogicUpdate() { }
 
-        public virtual void PhysicsUpdate() { }
+        public virtual void PhysicsUpdate() => DoChecks();
 
+        /// <summary>
+        /// 用在Enter 和 PhysicsUpdate 中
+        /// </summary>
         public virtual void DoChecks() { }
 
         public virtual void AnimationTrigger() { }

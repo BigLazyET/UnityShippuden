@@ -8,6 +8,9 @@ namespace Assets.Scripts.Player
     {
         #region Components
         public CoreNs.Core Core { get; private set; }
+
+        public Animator Animator { get; private set; }
+
         public PlayerInputHandler InputHandler { get; private set; }
         #endregion
 
