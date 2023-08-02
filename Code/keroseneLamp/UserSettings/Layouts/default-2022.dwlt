@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Inspector
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 19
+  controlID: 39
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -64,12 +64,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1464
+    x: 1463
     y: 0
-    width: 456
+    width: 457
     height: 939
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -92,10 +92,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 337
-    height: 487
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 335
+    height: 486
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -117,9 +117,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 487
-    width: 1464
-    height: 452
+    y: 486
+    width: 1463
+    height: 453
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 14}
@@ -219,12 +219,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1464
+    width: 1463
     height: 939
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 20
+  controlID: 40
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,12 +244,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1464
-    height: 487
+    width: 1463
+    height: 486
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 21
+  controlID: 41
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -265,12 +265,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 337
+    x: 335
     y: 0
-    width: 1127
-    height: 487
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 1128
+    height: 486
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 17}
@@ -1187,24 +1187,8 @@ MonoBehaviour:
   _selectedItem: Baking.BakingTypes.CompoundBBSystem.__codegen__OnCreate(System.IntPtr,
     System.IntPtr)
   targetNames:
-  - Events.ClearStatefulCollisionEventDynamicBufferJob - (IJobChunk)
-  - Events.CollectCollisionEventsWithDetailsJob - (Unity.Physics.ICollisionEventsJobBase)
-  - Events.ConvertEventStreamToDynamicBufferJob`2[Events.StatefulCollisionEvent,Events.DummyExcludeComponent]
-    - (IJob)
-  - Events.StatefulCollisionEventSystem.__codegen__OnCreate(System.IntPtr, System.IntPtr)
-  - Events.StatefulCollisionEventSystem.__codegen__OnUpdate(System.IntPtr, System.IntPtr)
   - PaintDotNet.Data.PhotoshopFileType.PDNAlphaMaskJob - (IJob)
   - PaintDotNet.Data.PhotoshopFileType.PDNDecoderJob - (IJobParallelFor)
-  - PlayerController.ApplyDefferedPhysicsUpdatesJob - (IJob)
-  - PlayerController.CopyPhysicsVelocityToSmoothingJob - (IJobChunk)
-  - PlayerController.PlayerControllerInternalJob - (IJobChunk)
-  - PlayerController.PlayerControllerInternalSystem.__codegen__OnCreate(System.IntPtr,
-    System.IntPtr)
-  - PlayerController.PlayerControllerInternalSystem.__codegen__OnUpdate(System.IntPtr,
-    System.IntPtr)
-  - PlayerController.PlayerControllerJob - (IJobChunk)
-  - PlayerController.PlayerControllerSystem.__codegen__OnCreate(System.IntPtr, System.IntPtr)
-  - PlayerController.PlayerControllerSystem.__codegen__OnUpdate(System.IntPtr, System.IntPtr)
   - TransformBakingSystem.BakedRuntimeTransformsJob - (IJobChunk)
   - TransformBakingSystem.BakedRuntimeTransformsJob.IsUniformScale(Unity.Mathematics.float3&)
   - Unity.Burst.Intrinsics.X86.DoGetCSRTrampoline()
@@ -1948,9 +1932,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 560
-    width: 1463
-    height: 431
+    y: 559
+    width: 1462
+    height: 432
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1988,10 +1972,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 73}
-    m_SelectedIDs: aa770000
-    m_LastClickedID: 30634
-    m_ExpandedIDs: 000000003e7700004077000000ca9a3b
+    scrollPos: {x: 0, y: 77.400024}
+    m_SelectedIDs: 52780000
+    m_LastClickedID: 30802
+    m_ExpandedIDs: 00000000e8770000ea77000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2019,7 +2003,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e77000040770000
+    m_ExpandedIDs: 00000000e8770000ea770000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2050,18 +2034,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: InputActions
-      m_OriginalName: InputActions
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 30664
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
@@ -2095,9 +2079,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1464
+    x: 1463
     y: 73
-    width: 455
+    width: 456
     height: 918
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -2144,8 +2128,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 336
-    height: 466
+    width: 334
+    height: 465
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -2159,9 +2143,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c8770000
+      m_SelectedIDs: 62780000
       m_LastClickedID: 0
-      m_ExpandedIDs: 18faffff
+      m_ExpandedIDs: fcf7ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -2764,10 +2748,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 337
+    x: 335
     y: 73
-    width: 1125
-    height: 466
+    width: 1126
+    height: 465
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0

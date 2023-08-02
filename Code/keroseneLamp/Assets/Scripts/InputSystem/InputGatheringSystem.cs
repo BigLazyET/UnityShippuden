@@ -17,6 +17,31 @@ namespace Common
         float playerFiring;
         bool playerJumped;
 
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDashDirection(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnGrap(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnPrimaryAttack(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnSecondaryAttack(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnCreate()
         {
             inputActions = new InputActions();

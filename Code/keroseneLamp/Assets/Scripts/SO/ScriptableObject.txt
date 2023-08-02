@@ -6,3 +6,4 @@
 https://va.lent.in/unity-make-your-lists-functional-with-reorderablelist/
 
 * 可将数据存储为工程的资源文件,和一般的json与xml等数据文件比起来,他的可视化就好太多了,直接能在Inspector面板看到数据,类似这样的
+* 运行时也可以修改！
