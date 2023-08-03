@@ -4,12 +4,13 @@ namespace Assets.Scripts.Core
 {
     /// <summary>
     /// 碰撞检测
+    /// 适用于大部分物体的基本碰撞检测判断：地面判断，墙壁判断，天花板判断等
     /// </summary>
     public class CollisionSenses : CoreComponent
     {
-        private Movement movement;
-        public Movement Movement => movement ?? core.GetCoreComponent<Movement>();
+        public Movement Movement => Movement ?? core.GetCoreComponent<Movement>();
 
+        // set in inspector
         [SerializeField] private Transform groundCheck;
         [SerializeField] private Transform wallCheck;
         [SerializeField] private Transform ledgeCheckHorizontal;

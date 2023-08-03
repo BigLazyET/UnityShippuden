@@ -50,11 +50,14 @@ namespace Assets.Scripts.Player
             CheckDashIputHoldTime();
         }
 
-        public void SilentJumpInputByInUse() => JumpInput = false;
+        // 详见 AnimationEventHandler的OnUseInput
+        // 该触发器用于在武器动画中指示何时应该“使用”输入，这意味着玩家必须释放输入键并再次按下它才能触发下一次攻击。
+        // 通常，此动画事件会添加到动画的第一个“动作”帧中。例如第一个剑击帧或释放弓的帧。
+        public void ConsumedJumpInputByInUse() => JumpInput = false;
 
-        public void SilentDashInputByInUse() => DashInput = false;
+        public void ConsumedDashInputByInUse() => DashInput = false;
 
-        public void SilentAttackInput(int i) => AttackInputs[i] = false;
+        public void ConsumedAttackInput(int i) => AttackInputs[i] = false;
 
         public void CheckJumpInputHoldTime() => JumpInput = Time.time < jumpInputStartTime + inputHoldTime;
 

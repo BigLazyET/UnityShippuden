@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
@@ -11,9 +6,19 @@ namespace Assets.Scripts.Core
     {
         protected Core core;
 
-        protected virtual void Awake()
+        private void Awake()
+        {
+            Init();
+        }
+
+        public virtual void Init()
         {
             core = transform.parent.GetComponent<Core>();
+
+            if (core == null)
+                Debug.LogError("No core on the parent!");
+
+            core.AddCoreComponent(this);
         }
 
         public virtual void LogicUpdate() { }

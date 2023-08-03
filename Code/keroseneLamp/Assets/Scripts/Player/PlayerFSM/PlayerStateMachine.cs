@@ -18,12 +18,6 @@ namespace Assets.Scripts.Player
                 return;
             }
 
-            if (CurrentState == null)
-            {
-                CurrentState = state;
-                return;
-            }
-
             if (playerStates.ContainsKey(state.PlayerStateType))
             {
                 Debug.LogError($"FsmSystem map already contains stateId:{state.PlayerStateType}");
@@ -45,9 +39,9 @@ namespace Assets.Scripts.Player
             playerStates.Remove(playerStateType);
         }
 
-        public void Initialize(PlayerState startingState)
+        public void Initialize(PlayerStateType playerStateType)
         {
-            CurrentState = startingState;
+            CurrentState = playerStates[playerStateType];
             CurrentState.Enter();
         }
 
