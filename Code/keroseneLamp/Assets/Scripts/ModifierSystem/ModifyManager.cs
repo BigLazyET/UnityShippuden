@@ -10,7 +10,7 @@ namespace Assets.Scripts.ModifierSystem
 
         public void RemoveModifier(TModifierType modifierType) => ModifierTypes.Remove(modifierType);
 
-        public TValueType ApplyModifiers(TValueType initialValue)
+        public TValueType ApplyAllModifiers(TValueType initialValue)
         {
             var modifiedValue = initialValue;
 

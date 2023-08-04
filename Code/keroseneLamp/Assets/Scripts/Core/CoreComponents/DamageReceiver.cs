@@ -1,28 +1,28 @@
 ﻿using Assets.Scripts.Combat;
 using Assets.Scripts.ModifierSystem;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
-    public class DamageReceiver : CoreComponent
+    public class DamageReceiver : CoreComponent, IDamageable
     {
         // set in inspector
         [SerializeField] private GameObject damageParticles;
 
-        private BodyStatus bodyStatus;
+        public BodyStatus BodyStatus => BodyStatus ?? core.GetCoreComponent<BodyStatus>();
+
+        public ParticleManager ParticleManager => ParticleManager ?? core.GetCoreComponent<ParticleManager>();
 
         public ModifyManager<Modifier<DamageData>, DamageData> DamageModifyManager => new();
 
-        public override void Init()
+        public void Damage(DamageData damageData)
         {
-            base.Init();
+            print($"Damage Amount Before Modifiers: {damageData.Amount}");
+            damageData = DamageModifyManager.ApplyAllModifiers(damageData);
+            print($"Damage Amount After Modifiers: {damageData.Amount}");
 
-            bodyStatus = core.GetCoreComponent<BodyStatus>();
+            BodyStatus.Health.Decrease(damageData.Amount);
+            ParticleManager.StartParticlesWithRandomQuaternion(damageParticles);
         }
     }
 }
