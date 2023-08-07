@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace Assets.Scripts.CoreSystem
 {
     public class ParticleManager : CoreComponent
     {

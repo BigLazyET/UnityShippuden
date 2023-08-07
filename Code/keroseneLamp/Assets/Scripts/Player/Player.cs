@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.Core;
+﻿using Assets.Scripts.CoreSystem;
 using Assets.Scripts.SO;
 using Assets.Scripts.Weapons;
 using UnityEngine;
-using CoreNs = Assets.Scripts.Core;
 
 namespace Assets.Scripts.Player
 {
@@ -15,7 +14,7 @@ namespace Assets.Scripts.Player
         [field: SerializeField] private PlayerDataSO playerDataSO;
 
         // components
-        public CoreNs.Core Core { get; private set; }
+        public Core Core { get; private set; }
         public BodyStatus BodyStatus { get; private set; }
         public Animator Animator { get; private set; }
         public Rigidbody2D Rigidbody2D { get; private set; }
@@ -37,7 +36,7 @@ namespace Assets.Scripts.Player
         private void Awake()
         {
             // components
-            Core = GetComponentInChildren<CoreNs.Core>();
+            Core = GetComponentInChildren<Core>();
             BodyStatus = Core.GetCoreComponent<BodyStatus>();
 
             // player states

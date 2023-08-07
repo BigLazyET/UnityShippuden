@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace Assets.Scripts.CoreSystem
 {
     public class BodyStatus: CoreComponent
     {

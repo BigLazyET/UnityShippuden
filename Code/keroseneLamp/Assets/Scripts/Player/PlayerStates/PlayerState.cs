@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.SO;
+﻿using Assets.Scripts.CoreSystem;
+using Assets.Scripts.SO;
 using UnityEngine;
-using CoreNs = Assets.Scripts.Core; 
 
 namespace Assets.Scripts.Player
 {
@@ -8,7 +8,7 @@ namespace Assets.Scripts.Player
     {
         private string animBoolName;
         
-        protected CoreNs.Core core;
+        protected Core core;
         protected Player player;
         protected PlayerDataSO playerDataSO;
         protected PlayerStateMachine stateMachine;

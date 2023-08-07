@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Core;
+﻿using Assets.Scripts.CoreSystem;
 using Assets.Scripts.SO;
 
 namespace Assets.Scripts.Player

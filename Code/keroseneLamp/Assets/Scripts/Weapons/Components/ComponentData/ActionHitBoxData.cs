@@ -5,7 +5,7 @@ namespace Assets.Scripts.Weapons
 {
     [Serializable]
     [RequireComponent(typeof(ActionHitBox))]
-    public class AttackHitBoxData : ComponentAttackData<AttackActionHitBox>
+    public class ActionHitBoxData : ComponentData<AttackActionHitBox>
     {
         protected override void SetComponentDependency()
         {

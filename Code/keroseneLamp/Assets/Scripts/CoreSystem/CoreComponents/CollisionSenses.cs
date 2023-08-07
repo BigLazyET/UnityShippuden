@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace Assets.Scripts.CoreSystem
 {
     /// <summary>
     /// 碰撞检测

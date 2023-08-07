@@ -7,6 +7,7 @@ namespace Assets.Scripts.Weapons
     public class AttackActionHitBox : AttackData
     {
         public bool debug;
+
         [SerializeField] public Rect HitBox { get; private set; }
     }
 }

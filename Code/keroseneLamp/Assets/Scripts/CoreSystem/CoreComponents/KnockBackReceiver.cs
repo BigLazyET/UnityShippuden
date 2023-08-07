@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace Assets.Scripts.CoreSystem
 {
     public class KnockBackReceiver : CoreComponent, IKnockBackable
     {
-        [SerialzeField] private float maxKnockBackTime = 0.2f;
+        [SerializeField] private float maxKnockBackTime = 0.2f;
 
         private float knockBackStartTime;
         private bool isKnockBackActive;

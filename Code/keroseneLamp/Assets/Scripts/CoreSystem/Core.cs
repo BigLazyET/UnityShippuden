@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace Assets.Scripts.CoreSystem
 {
     /// <summary>
     /// 在某些模块中，比如武器模块等，Core代表模块中所有Entity的根
