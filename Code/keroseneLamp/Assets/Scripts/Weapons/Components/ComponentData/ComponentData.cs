@@ -34,7 +34,7 @@ namespace Assets.Scripts.Weapons
 
         [SerializeField] private T[] attackDatas;
 
-        public T GetData(int index) => attackDatas[repeatData ? 0 : index];
+        public T GetAttackData(int index) => attackDatas[repeatData ? 0 : index];
 
         public T[] GetAllAttackData() => attackDatas;
 

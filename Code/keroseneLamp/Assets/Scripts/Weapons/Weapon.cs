@@ -1,7 +1,8 @@
-﻿using Assets.Scripts.CoreSystem;
+﻿using Assets.Scripts.Common;
+using Assets.Scripts.CoreSystem;
 using Assets.Scripts.SO;
 using System;
-using System.Timers;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons
@@ -26,7 +27,7 @@ namespace Assets.Scripts.Weapons
         private bool currentInput;  // bound to player attack state
         private int currentAttackCounter;
         private AnimationEventHandler eventHandler;
-        private Timer attackCounterResetTimer;  // while time has passed reset time, then Reset attack counter to 0
+        private TimeNotifier attackCounterResetTimer;  // while time has passed reset time, then Reset attack counter to 0
 
         // properties
         public bool CurrentInput
@@ -57,7 +58,7 @@ namespace Assets.Scripts.Weapons
         public float AttackStartTime { get; private set; }
         public Core Core { get; private set; }
         public WeaponDataSO WeaponData { get; private set; }
-        public Animator animator { get; private set; }  // 也是作为了WeaponDataSO的一项资源，其本质上被WeaponDataSO.AnimatorController赋值
+        public Animator Animator { get; private set; }  // 也是作为了WeaponDataSO的一项资源，其本质上被WeaponDataSO.AnimatorController赋值
         public GameObject BaseGameObject { get; private set; }
         public GameObject WeaponSpriteGameObject { get; private set; }
 
@@ -69,16 +70,72 @@ namespace Assets.Scripts.Weapons
         public void Enter()
         {
             AttackStartTime = Time.time;
-            attackCounterResetTimer.Enabled = false;
 
-            animator.SetBool("active", true);
-            animator.SetInteger("counter", currentAttackCounter);
+            Animator.SetBool("active", true);
+            Animator.SetInteger("counter", currentAttackCounter);
+
+            attackCounterResetTimer.Disable();
+
+            OnEnter?.Invoke();
         }
 
         public void Exit()
         {
+            Animator.SetBool("active", false);
 
+            CurrentAttackCounter++;
+            attackCounterResetTimer.Init(attackCounterResetCoolDown);
+
+            OnExit?.Invoke();
         }
+        #endregion
+
+        #region Lifecycle
+        private void Awake()
+        {
+            GetDependencies();
+
+            attackCounterResetTimer = new TimeNotifier();
+        }
+
+        private void OnEnable()
+        {
+            EventHandler.OnConsumeInput += HandleConsumeInput;
+            attackCounterResetTimer.OnNotify += ResetAttackCounter;
+        }
+
+        private void Update()
+        {
+            attackCounterResetTimer.Tick();
+        }
+
+        private void OnDisable()
+        {
+            EventHandler.OnConsumeInput -= HandleConsumeInput;
+            attackCounterResetTimer.OnNotify -= ResetAttackCounter;
+        }
+        #endregion
+
+        #region Private Funcs
+        private void ResetAttackCounter()
+        {
+            CurrentAttackCounter = 0;
+        }
+
+        private void GetDependencies()
+        {
+            if(initDone) return;
+
+            BaseGameObject = transform.Find("Base").gameObject;
+            Animator = BaseGameObject.GetComponent<Animator>();
+            EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+
+            WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
+
+            initDone = true;
+        }
+
+        private void HandleConsumeInput() => OnConsumeInput?.Invoke();
         #endregion
     }
 }
