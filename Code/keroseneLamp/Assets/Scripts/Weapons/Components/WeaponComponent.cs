@@ -18,7 +18,7 @@ namespace Assets.Scripts.Weapons
         public virtual void Init() { }
 
         #region Lifecycle
-        private void Awake()
+        protected virtual void Awake()
         {
             weapon = GetComponent<Weapon>();
         }

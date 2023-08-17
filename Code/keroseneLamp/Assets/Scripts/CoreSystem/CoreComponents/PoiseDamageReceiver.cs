@@ -7,7 +7,7 @@ namespace Assets.Scripts.CoreSystem
     {
         private BodyStatus bodyStatus;
 
-        public ModifyManager<Modifier<PoisonData>, PoisonData> ModifyManager => new();
+        public ModifyManager<Modifier<PoisonData>, PoisonData> PoiseDamageModifyManager => new();
 
         public override void Init()
         {
@@ -18,7 +18,7 @@ namespace Assets.Scripts.CoreSystem
 
         public void Poison(PoisonData poisonData)
         {
-            poisonData = ModifyManager.ApplyAllModifiers(poisonData);
+            poisonData = PoiseDamageModifyManager.ApplyAllModifiers(poisonData);
 
             bodyStatus.Poison.Decrease(poisonData.Amount);
         }

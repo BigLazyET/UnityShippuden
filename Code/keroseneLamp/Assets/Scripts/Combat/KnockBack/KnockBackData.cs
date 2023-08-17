@@ -4,7 +4,7 @@ namespace Assets.Scripts.Combat
 {
     public class KnockBackData
     {
-        public float Strength { get; private set; }
+        public float Strength { get; set; }
 
         public Vector2 Angle { get; private set; }
 
@@ -19,7 +19,5 @@ namespace Assets.Scripts.Combat
             Strength = strength;
             Taker = taker;
         }
-
-
     }
 }

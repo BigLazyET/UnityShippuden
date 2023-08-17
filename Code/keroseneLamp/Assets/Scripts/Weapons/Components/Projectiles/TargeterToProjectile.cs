@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Weapons
 {
-    public class AttackBlock : AttackData
+    public class TargeterToProjectile : WeaponComponent
     {
     }
 }
