@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.ProjectileSystem;
+using System;
+using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Assets.Scripts.Weapons
 {
@@ -11,6 +10,7 @@ namespace Assets.Scripts.Weapons
     /// </summary>
     public interface IProjectileSpawnerStrategy
     {
-
+        void ExecuteSpawnerStrategy(ProjectileSpawnInfo projectileSpawnInfo, Vector3 spawnerPos, int facingDirection,
+             ObjectPool<Projectile> objectPool, Action<Projectile> OnSpawnProjectile);
     }
 }
