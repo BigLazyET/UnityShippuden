@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.CoreSystem;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons
@@ -10,20 +9,20 @@ namespace Assets.Scripts.Weapons
 
         private Vector2 offset;
         private Collider2D[] detected;
-        private CoreComponentGeneric<Movement> movement;
+        private CoreSystem.Movement movement;
 
         protected override void Start()
         {
             base.Start();
 
-            movement = new CoreComponentGeneric<Movement>(Core);
-            AnimationEventHandler.OnAttackAction += HandleAttackAction;
+            movement = weapon.Core.GetCoreComponent<CoreSystem.Movement>();
+            weapon.AnimationEventHandler.OnAttackAction += HandleAttackAction;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            AnimationEventHandler.OnAttackAction -= HandleAttackAction;
+            weapon.AnimationEventHandler.OnAttackAction -= HandleAttackAction;
         }
 
         private void OnDrawGizmosSelected()
@@ -40,7 +39,7 @@ namespace Assets.Scripts.Weapons
 
         private void HandleAttackAction()
         {
-            offset.Set(transform.position.x + (currentAttackData.HitBox.center.x * movement.CoreComponent.FacingDirection),
+            offset.Set(transform.position.x + (currentAttackData.HitBox.center.x * movement.FacingDirection),
                        transform.position.y + (currentAttackData.HitBox.center.y));
 
             detected = Physics2D.OverlapBoxAll(offset, currentAttackData.HitBox.size, 0f, data.DetectableLayer);

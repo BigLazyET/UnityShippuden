@@ -38,7 +38,7 @@ namespace Assets.Scripts.CoreSystem
             if (coreComponent)
                 return coreComponent;
 
-            coreComponent = GetComponentInChildren<T>();
+            coreComponent = GetComponentInChildren<T>();    // 因为所有的Child CoreComponent都挂载到一个EmptyGameObject上
 
             if (coreComponent)
                 return coreComponent;

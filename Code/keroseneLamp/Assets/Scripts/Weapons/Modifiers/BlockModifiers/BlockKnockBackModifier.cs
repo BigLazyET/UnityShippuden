@@ -1,9 +1,8 @@
-﻿using Assets.Scripts.Combat;
-using Assets.Scripts.ModifierSystem;
+﻿using Assets.Scripts.ModifierSystem;
 
 namespace Assets.Scripts.Weapons
 {
-    public class BlockKnockBackModifier : Modifier<KnockBackData>
+    public class BlockKnockBackModifier : Modifier<Combat.KnockBackData>
     {
         private readonly BlockConditionDelegate isKnockBacked;
 
@@ -12,7 +11,7 @@ namespace Assets.Scripts.Weapons
             this.isKnockBacked = isKnockBacked;
         }
 
-        public override KnockBackData ModifyValue(KnockBackData value)
+        public override Combat.KnockBackData ModifyValue(Combat.KnockBackData value)
         {
             if (isKnockBacked(value.Taker.transform, out var blockDirectionInformation))
             {

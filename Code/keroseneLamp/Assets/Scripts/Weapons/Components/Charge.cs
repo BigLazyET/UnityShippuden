@@ -17,7 +17,7 @@ namespace Assets.Scripts.Weapons
             base.HandleOnEnter();
 
             currentCharge = currentAttackData.InitialChargeAmount;
-            timeNotifier.Init(currentAttackData.ChargeTime);
+            timeNotifier.Init(new TimeNotifierData { duration = currentAttackData.ChargeTime });
         }
 
         protected override void HandleOnExit()
@@ -31,13 +31,13 @@ namespace Assets.Scripts.Weapons
         {
             currentCharge++;
 
-            if(currentCharge > currentAttackData.NumberOfCharges)
+            if (currentCharge > currentAttackData.NumberOfCharges)
             {
                 currentCharge = currentAttackData.NumberOfCharges;
                 timeNotifier.Disable();
 
                 particleManager.StartParticlesRelative(currentAttackData.FullyIncreaseIndicatorParticlePrefab,
-                    currentAttackData.ParticleOffset,Quaternion.identity);
+                    currentAttackData.ParticleOffset, Quaternion.identity);
             }
             else
                 particleManager.StartParticlesRelative(currentAttackData.ChargeIncreaseIndicatorParticlePrefab,
@@ -63,7 +63,7 @@ namespace Assets.Scripts.Weapons
         {
             base.Start();
 
-            particleManager = Core.GetCoreComponent<ParticleManager>();
+            particleManager = weapon.Core.GetCoreComponent<ParticleManager>();
         }
 
         private void Update()

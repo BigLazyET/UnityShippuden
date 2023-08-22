@@ -35,7 +35,7 @@ namespace Assets.Scripts.CoreSystem
             SetFinalVelocity();
         }
 
-        public void SetVeolocity(float velocity, Vector2 angle, int direction)
+        public void SetVelocity(float velocity, Vector2 angle, int direction)
         {
             angle.Normalize();
             workspace.Set(velocity * angle.x * direction, velocity * angle.y * direction);

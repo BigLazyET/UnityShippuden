@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.ProjectileSystem;
+﻿using Assets.Scripts.ObjectPoolSystem;
+using Assets.Scripts.ProjectileSystem;
 using System;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace Assets.Scripts.Weapons
 {

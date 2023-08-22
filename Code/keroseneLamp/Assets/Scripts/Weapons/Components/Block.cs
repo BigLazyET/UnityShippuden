@@ -16,20 +16,20 @@ namespace Assets.Scripts.Weapons
         private BlockKnockBackModifier blockKnockBackModifier;
         private BlockPoiseDamageModifier blockPoiseDamageModifier;
 
-        private Movement movement;
+        private CoreSystem.Movement movement;
 
         protected override void Start()
         {
             base.Start();
 
-            movement = Core.GetCoreComponent<Movement>();
+            movement = weapon.Core.GetCoreComponent<CoreSystem.Movement>();
 
-            damageReceiver = Core.GetCoreComponent<DamageReceiver>();
-            knockBackReceiver = Core.GetCoreComponent<KnockBackReceiver>();
-            poiseDamageReceiver = Core.GetCoreComponent<PoiseDamageReceiver>();
+            damageReceiver = weapon.Core.GetCoreComponent<DamageReceiver>();
+            knockBackReceiver = weapon.Core.GetCoreComponent<KnockBackReceiver>();
+            poiseDamageReceiver = weapon.Core.GetCoreComponent<PoiseDamageReceiver>();
 
-            AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
-            AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
+            weapon.AnimationEventHandler.OnStartAnimationWindow += HandleStartAnimationWindow;
+            weapon.AnimationEventHandler.OnStopAnimationWindow += HandleStopAnimationWindow;
 
             blockDamageModifier = new BlockDamageModifier(IsAttackBlocked);
             blockKnockBackModifier = new BlockKnockBackModifier(IsAttackBlocked);
@@ -42,8 +42,8 @@ namespace Assets.Scripts.Weapons
         {
             base.OnDestroy();
 
-            AnimationEventHandler.OnStartAnimationWindow -= HandleStartAnimationWindow;
-            AnimationEventHandler.OnStopAnimationWindow -= HandleStopAnimationWindow;
+            weapon.AnimationEventHandler.OnStartAnimationWindow -= HandleStartAnimationWindow;
+            weapon.AnimationEventHandler.OnStopAnimationWindow -= HandleStopAnimationWindow;
 
             blockDamageModifier.OnBlock -= HandleBlock;
         }
@@ -71,7 +71,7 @@ namespace Assets.Scripts.Weapons
         private bool IsAttackBlocked(Transform source, out BlockDirectionInformation blockDirectionInformation)
         {
             var angleOfAttack = Vector2.SignedAngle(Vector2.right * movement.FacingDirection,
-                                                    (source.position-Core.Root.transform.position) * movement.FacingDirection);
+                                                    (source.position-weapon.Core.Root.transform.position) * movement.FacingDirection);
             return currentAttackData.IsBlocked(angleOfAttack, out blockDirectionInformation);
         }
     }

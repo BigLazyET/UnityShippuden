@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Common;
+﻿using Assets.Scripts.Combat;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Weapons
 {
@@ -8,7 +9,13 @@ namespace Assets.Scripts.Weapons
 
         private void HandleDetectedCollider2D(UnityEngine.Collider2D[] colliders)
         {
-            CombatUtilities.Damage(colliders, new Combat.DamageData(currentAttackData.Amount, Core.Root));
+            foreach (var collider in colliders)
+            {
+                if(collider.gameObject.TryGetComponentInChildren(out IDamageable damageable))
+                {
+                    damageable.Damage(new Combat.DamageData(currentAttackData.Amount, weapon.Core.Root));
+                }
+            }
         }
 
         protected override void Start()

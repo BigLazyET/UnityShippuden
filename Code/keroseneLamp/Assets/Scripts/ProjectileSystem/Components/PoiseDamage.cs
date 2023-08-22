@@ -45,7 +45,7 @@ namespace Assets.Scripts.ProjectileSystem
 
             foreach (var hit in hits)
             {
-                if (!LayerMaskUtilities.IsLayerInMask(hit, LayerMask)) continue;
+                if (!hit.collider.gameObject.IsLayerInMask(LayerMask)) continue;
 
                 if (!hit.collider.transform.gameObject.TryGetComponentInChildren(out IPoisonable component)) continue;
 

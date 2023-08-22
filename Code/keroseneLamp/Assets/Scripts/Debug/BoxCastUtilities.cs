@@ -6,7 +6,7 @@ namespace Assets.Scripts.Common
     // It helped me debug the boxcast used in the projectile HitBox
 
     /// <summary>
-    ///     A class that allows to visualize the Physics2D.BoxCast() method.
+    /// 用来可视化Physics2D.BoxCast()/BoxCastAll()
     /// </summary>
     /// <remarks>
     ///     Use Draw() to visualize an already cast box,
@@ -15,7 +15,7 @@ namespace Assets.Scripts.Common
     public class BoxCastUtilities
     {
         /// <summary>
-        ///     Visualizes BoxCast with help of debug lines.
+        /// Visualizes BoxCast with help of debug lines.
         /// </summary>
         /// <param name="hitInfo"> The cast result. </param>
         /// <param name="origin"> The point in 2D space where the box originates. </param>

@@ -49,7 +49,7 @@ namespace Assets.Scripts.Weapons
             private set => currentAttackCounter = value >= WeaponData.NumberOfAttacks ? 0 : value;
         }
 
-        public AnimationEventHandler EventHandler
+        public AnimationEventHandler AnimationEventHandler
         {
             get => eventHandler;
             private set => eventHandler = value;
@@ -100,7 +100,7 @@ namespace Assets.Scripts.Weapons
 
         private void OnEnable()
         {
-            EventHandler.OnConsumeInput += HandleConsumeInput;
+            AnimationEventHandler.OnConsumeInput += HandleConsumeInput;
             attackCounterResetTimer.OnNotify += ResetAttackCounter;
         }
 
@@ -111,7 +111,7 @@ namespace Assets.Scripts.Weapons
 
         private void OnDisable()
         {
-            EventHandler.OnConsumeInput -= HandleConsumeInput;
+            AnimationEventHandler.OnConsumeInput -= HandleConsumeInput;
             attackCounterResetTimer.OnNotify -= ResetAttackCounter;
         }
         #endregion
@@ -128,7 +128,7 @@ namespace Assets.Scripts.Weapons
 
             BaseGameObject = transform.Find("Base").gameObject;
             Animator = BaseGameObject.GetComponent<Animator>();
-            EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+            AnimationEventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
             WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
 

@@ -6,12 +6,7 @@ namespace Assets.Scripts.CoreSystem
     {
         protected Core core;
 
-        private void Awake()
-        {
-            Init();
-        }
-
-        public virtual void Init()
+        protected virtual void Awake()
         {
             core = transform.parent.GetComponent<Core>();
 

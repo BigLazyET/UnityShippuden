@@ -89,7 +89,7 @@ namespace Assets.Scripts.ProjectileSystem
 
             foreach (var hit in hits)
             {
-                if (!LayerMaskUtilities.IsLayerInMask(hit, LayerMask)) continue;
+                if (!hit.collider.gameObject.IsLayerInMask(LayerMask)) continue;
 
                 SetReferenceTransformAndPoint(hit.transform, hit.point);
                 return;

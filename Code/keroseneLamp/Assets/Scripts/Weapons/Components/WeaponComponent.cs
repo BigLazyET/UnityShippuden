@@ -9,12 +9,6 @@ namespace Assets.Scripts.Weapons
 
         protected bool isAttackActive;
 
-        protected Core Core => weapon.Core;
-
-        protected float AttackStartTime => weapon.AttackStartTime;
-
-        protected AnimationEventHandler AnimationEventHandler => weapon.EventHandler;
-
         public virtual void Init() { }
 
         #region Lifecycle
