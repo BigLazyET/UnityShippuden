@@ -14,7 +14,7 @@ namespace Assets.Scripts.Weapons
 
         public override PoisonData ModifyValue(PoisonData value)
         {
-            if (isBlocked(value.Taker.transform, out var blockDirectionInformation))
+            if (isBlocked(value.Source.transform, out var blockDirectionInformation))
                 value.SetAmount(value.Amount * (1 - blockDirectionInformation.PoiseDamageAbsorption));
             return value;
         }

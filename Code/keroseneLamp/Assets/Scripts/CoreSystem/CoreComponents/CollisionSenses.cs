@@ -10,11 +10,10 @@ namespace Assets.Scripts.CoreSystem
     {
         public Movement Movement => Movement ?? core.GetCoreComponent<Movement>();
 
-        // set in inspector
         [SerializeField] private Transform groundCheck;
         [SerializeField] private Transform wallCheck;
-        [SerializeField] private Transform ledgeCheckHorizontal;
-        [SerializeField] private Transform ledgeCheckVertical;
+        [SerializeField] private Transform ledgeCheckHorizontal;    // TODO?
+        [SerializeField] private Transform ledgeCheckVertical;  // TODO?
         [SerializeField] private Transform ceilingCheck;
 
         [SerializeField] private float groundedCheckRadius;

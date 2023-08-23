@@ -18,10 +18,10 @@ namespace Assets.Scripts.Weapons
 
         public override Combat.DamageData ModifyValue(Combat.DamageData value)
         {
-            if(isBlocked(value.Taker.transform, out var blockDirectionInformation))
+            if(isBlocked(value.Source.transform, out var blockDirectionInformation))
             {
                 value.SetAmount(value.Amount * (1 - blockDirectionInformation.DamageAbsorption));
-                OnBlock?.Invoke(value.Taker);
+                OnBlock?.Invoke(value.Source);
             }
             return value;
         }

@@ -5,14 +5,13 @@ namespace Assets.Scripts.CoreSystem
 {
     public class BodyStatus: CoreComponent
     {
-        // set in inspector
         [SerializeField] public BodyStatu Health { get; private set; }  // 理解：玩家的生命初始值
-        [SerializeField] public BodyStatu Poison { get; private set; }  // 理解：玩家的耐毒初始值，当耐毒值归零后，玩家处于晕厥状态
+        [SerializeField] public BodyStatu Poison { get; private set; }  // 理解：玩家的耐毒初始值，当耐毒值归零后，玩家处于晕厥状态Stun
         [SerializeField] public float PoisonRecoveryRate { get; private set; }
 
-        public override void Init()
+        protected override void Awake()
         {
-            base.Init();
+            base.Awake();
 
             Health.Init();
             Poison.Init();
@@ -22,7 +21,7 @@ namespace Assets.Scripts.CoreSystem
         {
             if (Poison.CurrentValue.Equals(Poison.MaxValue)) return;
 
-            Poison.Increase(PoisonRecoveryRate * Time.deltaTime);   // TODO?
+            Poison.Increase(PoisonRecoveryRate * Time.deltaTime);
         }
     }
 

@@ -10,14 +10,14 @@ namespace Assets.Scripts.Combat
         public float Amount { get; private set; }
 
         /// <summary>
-        /// 承受者
+        /// 攻击发起者 - 攻击来源 - 伤害源头
         /// </summary>
-        public GameObject Taker { get; private set; }
+        public GameObject Source { get; private set; }
 
-        public DamageData(float amount, GameObject taker)
+        public DamageData(float amount, GameObject source)
         {
             this.Amount = amount;
-            this.Taker = taker;
+            this.Source = source;
         }
 
         public void SetAmount(float amount) => Amount = amount;

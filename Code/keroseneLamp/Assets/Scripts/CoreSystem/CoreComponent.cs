@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.CoreSystem
 {
-    public class CoreComponent : MonoBehaviour, ILogicUpdate
+    public class CoreComponent : MonoBehaviour
     {
         protected Core core;
 

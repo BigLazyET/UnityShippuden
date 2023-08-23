@@ -13,7 +13,7 @@ namespace Assets.Scripts.Weapons
 
         public override Combat.KnockBackData ModifyValue(Combat.KnockBackData value)
         {
-            if (isKnockBacked(value.Taker.transform, out var blockDirectionInformation))
+            if (isKnockBacked(value.Source.transform, out var blockDirectionInformation))
             {
                 value.Strength = value.Strength * (1 - blockDirectionInformation.KnockBackAbsorption);
             }

@@ -9,7 +9,7 @@ namespace Assets.Scripts.Weapons
 
         private void HandleDetectedCollider2D(UnityEngine.Collider2D[] colliders)
         {
-            foreach (var collider in colliders)
+            foreach (var collider in colliders) // 这边的collider是指武器造成了伤害的对象的碰撞器，比如敌人的碰撞器等
             {
                 if(collider.gameObject.TryGetComponentInChildren(out IDamageable damageable))
                 {
