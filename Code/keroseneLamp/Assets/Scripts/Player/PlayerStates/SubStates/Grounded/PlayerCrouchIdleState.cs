@@ -25,7 +25,6 @@ namespace Assets.Scripts.Player
             base.Enter();
 
             Movement.SetVelocityZero();
-            player.
         }
 
         public override void Exit()

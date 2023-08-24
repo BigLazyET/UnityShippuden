@@ -10,26 +10,37 @@ namespace Assets.Scripts.CoreSystem
 
         private float knockBackStartTime;
         private bool isKnockBackActive;
-
-        public Movement Movement => Movement ?? core.GetCoreComponent<Movement>();
-
-        public CollisionSenses CollisionSenses => CollisionSenses ?? core.GetCoreComponent<CollisionSenses>();
+        private Movement movement;
+        private CollisionSenses collisionSenses;
 
         public ModifyManager<Modifier<KnockBackData>, KnockBackData> KnockBackModifyManager = new();
 
         public void KnockBack(KnockBackData knockBackData)
         {
             knockBackData = KnockBackModifyManager.ApplyAllModifiers(knockBackData);
+
+            movement.SetVelocity(knockBackData.Strength, knockBackData.Angle, knockBackData.Direction);
+            movement.CanSetVelocity = false;
+            isKnockBackActive = true;
+            knockBackStartTime = Time.time;
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            movement = core.GetCoreComponent<Movement>();
+            collisionSenses = core.GetCoreComponent<CollisionSenses>();
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
 
-            if (isKnockBackActive && ((Movement.CurrentVelocity.y < 0.01f && CollisionSenses.Ground)||Time.time > knockBackStartTime + maxKnockBackTime))
+            if (isKnockBackActive && ((movement.CurrentVelocity.y < 0.01f && collisionSenses.Ground)||Time.time > knockBackStartTime + maxKnockBackTime))
             {
                 isKnockBackActive = false;
-                Movement.CanSetVelocity = true;
+                movement.CanSetVelocity = true;
             }
         }
     }

@@ -84,7 +84,7 @@ namespace Assets.Scripts.Weapons
             Animator.SetBool("active", false);
 
             CurrentAttackCounter++;
-            attackCounterResetTimer.Init(attackCounterResetCoolDown);
+            attackCounterResetTimer.Init(new TimeNotifierData { duration = attackCounterResetCoolDown });
 
             OnExit?.Invoke();
         }

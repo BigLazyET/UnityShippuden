@@ -66,9 +66,9 @@ namespace Assets.Scripts.Player
             grapInput = player.InputHandler.GrapInput;
             dashInput = player.InputHandler.DashInput;
 
-            if (player.InputHandler.AttackInputs[((int)CombatInputs.Primary)] && !isTouchingCelling)
+            if (player.InputHandler.AttackInputs[((int)PlayCombatInputs.Primary)] && !isTouchingCelling)
                 stateMachine.ChangeState(PlayerStateType.PrimaryAttack);
-            if (player.InputHandler.AttackInputs[((int)CombatInputs.Secondary)] && !isTouchingCelling)
+            if (player.InputHandler.AttackInputs[((int)PlayCombatInputs.Secondary)] && !isTouchingCelling)
                 stateMachine.ChangeState(PlayerStateType.SecondaryAttack);
 
         }

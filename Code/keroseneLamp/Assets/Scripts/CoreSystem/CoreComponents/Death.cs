@@ -12,22 +12,22 @@ namespace Assets.Scripts.CoreSystem
 
         private void OnEnable()
         {
-            BodyStatus.Health.OnCurrentValueZero += Health_OnCurrentValueZero;
+            BodyStatus.Health.OnCurrentValueZero += HandleCurrentValueZero;
         }
 
         private void OnDisable()
         {
-            BodyStatus.Health.OnCurrentValueZero -= Health_OnCurrentValueZero;
+            BodyStatus.Health.OnCurrentValueZero -= HandleCurrentValueZero;
         }
 
-        private void Health_OnCurrentValueZero()
+        private void HandleCurrentValueZero()
         {
             foreach (var particle in deathParticles)
             {
                 ParticleManager.StartParticles(particle);
             }
 
-            core.transform.parent.gameObject.SetActive(false);
+            core.Root.SetActive(false);
         }
     }
 }

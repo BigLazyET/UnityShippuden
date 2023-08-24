@@ -60,6 +60,8 @@ namespace Assets.Scripts.Weapons
             var types = from type in AppDomain.CurrentDomain.GetAssemblies().SelectMany(a=>a.GetTypes())
                         where typeof(ComponentData).IsAssignableFrom(type) && !type.ContainsGenericParameters && type.IsClass
                         select type;
+
+            ComponetDataTypes = types.ToList();
         }
     }
 }

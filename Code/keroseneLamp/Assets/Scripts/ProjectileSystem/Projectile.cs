@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Scripts.ProjectileSystem
 {
     /// <summary>
-    /// 此类是 Projectile Component 和 生成Projectile的实体 之间的桥梁
+    /// 此类是 Projectile Component 和 生成Projectile的实体(比如：WeaponComponent - ProjectileSpawner) 之间的桥梁
     /// </summary>
     public class Projectile : MonoBehaviour
     {

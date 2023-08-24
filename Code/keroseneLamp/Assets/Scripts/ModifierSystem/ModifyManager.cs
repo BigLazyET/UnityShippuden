@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Assets.Scripts.ModifierSystem
 {
@@ -6,7 +8,11 @@ namespace Assets.Scripts.ModifierSystem
     {
         public IList<TModifierType> ModifierTypes = new List<TModifierType>();
 
-        public void AddModifier(TModifierType modifierType) => ModifierTypes.Add(modifierType);
+        public void AddModifier(TModifierType modifierType)
+        {
+            modifierType.AddTime = Time.time;
+            ModifierTypes.Add(modifierType);
+        }
 
         public void RemoveModifier(TModifierType modifierType) => ModifierTypes.Remove(modifierType);
 
@@ -14,8 +20,10 @@ namespace Assets.Scripts.ModifierSystem
         {
             var modifiedValue = initialValue;
 
+            ModifierTypes = ModifierTypes.OrderBy(x => x.AddTime).ToList();
+
             foreach (var modifier in ModifierTypes)
-                modifiedValue = modifier.ModifyValue(modifiedValue);    // TODO: sort order is better
+                modifiedValue = modifier.ModifyValue(modifiedValue);
 
             return modifiedValue;
         }

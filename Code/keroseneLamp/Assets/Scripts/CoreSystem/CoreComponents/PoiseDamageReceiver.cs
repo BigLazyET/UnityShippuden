@@ -9,9 +9,9 @@ namespace Assets.Scripts.CoreSystem
 
         public ModifyManager<Modifier<PoisonData>, PoisonData> PoiseDamageModifyManager => new();
 
-        public override void Init()
+        protected override void Awake()
         {
-            base.Init();
+            base.Awake();
 
             bodyStatus = core.GetCoreComponent<BodyStatus>();
         }

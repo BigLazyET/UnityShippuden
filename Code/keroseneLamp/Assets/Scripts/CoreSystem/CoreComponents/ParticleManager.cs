@@ -7,9 +7,9 @@ namespace Assets.Scripts.CoreSystem
         private Movement movement;
         private Transform particleContainer;
 
-        public override void Init()
+        protected override void Awake()
         {
-            base.Init();
+            base.Awake();
 
             particleContainer = GameObject.FindGameObjectWithTag("ParticleContainer").transform;
         }

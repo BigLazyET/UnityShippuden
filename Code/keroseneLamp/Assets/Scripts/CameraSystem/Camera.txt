@@ -1,0 +1,26 @@
+﻿# Camera
+
+## 相关链接
+* [Camera详解](https://blog.csdn.net/leoysq/article/details/103753977)
+
+## 抖动
+
+### 1. 利用Cinemachine实现
+https://zhuanlan.zhihu.com/p/136794347
+
+### 2. 一般实现
+https://github.com/tejas123/different-ways-of-shaking-camera-In-unity
+
+### 3. 利用柏林噪音来实现
+https://zhuanlan.zhihu.com/p/629332045
+https://zhuanlan.zhihu.com/p/594984625
+https://github.com/IronWarrior/UnityCameraShake
+
+## 跟随
+
+## 边界 Cinemachine Confiner
+
+## Timeline + Cinemachine 实现动作特写、相机切换和过场动画
+https://zhuanlan.zhihu.com/p/29387185?from_voters_page=true
+https://zhuanlan.zhihu.com/p/360236389
+https://bbs.csdn.net/topics/607156115

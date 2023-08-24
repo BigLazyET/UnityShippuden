@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.SO
 {
@@ -52,6 +47,6 @@ namespace Assets.Scripts.SO
         public float standColliderHeight = 1.6f;    // 站起时碰撞器高度
 
         [Header("Stun State")]
-        public float stunTime = 2f; // 
+        public float stunTime = 2f; // 晕眩时间(耐毒值消耗结束后)
     }
 }

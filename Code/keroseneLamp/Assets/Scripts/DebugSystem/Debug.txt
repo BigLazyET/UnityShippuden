@@ -1,0 +1,36 @@
+﻿# Debug - 辅助线的方式
+
+## Debug
+
+* 在Update/Fixed Update/LateUpdate里调用
+* 不能设置材质
+* 在编辑器中运行游戏时才显示
+* 只会在编辑器中显示，在具体平台上不显示
+* 会在sceneview中显示，也会在gameview中选中Gizmos时显示
+
+## Gizmos
+
+* 在OnDrawGizmos /OnDrawGizmosSelected里调用
+* 不能设置材质
+* 在编辑器中运行模式和非运行模式时都会显示
+* 只会在编辑器中显示，在具体平台上不显示
+* 会在sceneview中显示，也会在gameview中选中Gizmos时显示
+
+## LineRender
+
+[LineRenderer画线](https://blog.csdn.net/Jeffxu_lib/article/details/100019234)
+
+* 在 Scene 和 Game 窗口中都进行显示
+
+## Graphics.DrawMesh
+* 一般在Update/Fixed Update/LateUpdate里调用
+* 在 Scene 和 Game 窗口中都进行显示
+* 可以设置材质
+
+## GL
+
+* 一般在物体的OnRenderObject 或者相机的OnPostRender里调用
+* 在 Scene 和 Game 窗口中都进行显示
+* 可以设置材质
+* 一个GL.Begin/GL.End里的渲染是自动合并的，一般是一个Drawcall
+* 画一些线，三角可以。用GL.TRIANGLES 显示整个Mesh的话会超卡

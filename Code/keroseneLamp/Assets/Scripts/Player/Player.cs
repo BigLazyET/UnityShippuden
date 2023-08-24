@@ -10,10 +10,8 @@ namespace Assets.Scripts.Player
     /// </summary>
     public class Player : MonoBehaviour
     {
-        // set in inspector
         [field: SerializeField] private PlayerDataSO playerDataSO;
 
-        // components
         public Core Core { get; private set; }
         public BodyStatus BodyStatus { get; private set; }
         public Animator Animator { get; private set; }

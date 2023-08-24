@@ -4,7 +4,7 @@ namespace Assets.Scripts.CoreSystem
 {
     public class Movement : CoreComponent
     {
-        public Rigidbody2D RB {  get; private set; }
+        public Rigidbody2D RB { get; private set; }
 
         public int FacingDirection { get; private set; }
 
@@ -14,12 +14,12 @@ namespace Assets.Scripts.CoreSystem
 
         public Vector2 workspace;
 
-        public override void Init()
+        protected override void Awake()
         {
-            base.Init();
+            base.Awake();
 
-            RB = GetComponentInParent<Rigidbody2D>();
-            // RB = core.transform.parent.GetComponent<Rigidbody2D>();
+            //RB = GetComponentInParent<Rigidbody2D>();
+            RB = core.Root.GetComponent<Rigidbody2D>();
             FacingDirection = 1;
             CanSetVelocity = true;
         }
@@ -62,7 +62,7 @@ namespace Assets.Scripts.CoreSystem
 
         private void SetFinalVelocity()
         {
-            if(CanSetVelocity)
+            if (CanSetVelocity)
             {
                 CurrentVelocity = RB.velocity = workspace;
             }
@@ -74,10 +74,24 @@ namespace Assets.Scripts.CoreSystem
                 Flip();
         }
 
+        /// <summary>
+        /// 转向
+        /// 三种方式：scale, rotate, sprite renderer flip
+        /// https://zhuanlan.zhihu.com/p/357525446
+        /// </summary>
         public void Flip()
         {
+            // scale
+            // 确保素材原始scale为1，如果原始存在缩放，则此方法会产生意想不到的效果
+            // core.Root.transform.localScale = new Vector3(FacingDirection * -1, 0f, 0f);
+
+            // rotate
             FacingDirection *= -1;
             RB.transform.Rotate(0.0f, 180.0f, 0.0f);
+            // RB.transform.localRotation = FacingDirection == 1 ? Quaternion.Euler(0f, 0f, 0f) : Quaternion.Euler(0f, 180f, 0f);
+
+            // sprite renderer flip
+            // core.Root.GetComponent<SpriteRenderer>().flipX = FacingDirection == -1;
         }
     }
 }
