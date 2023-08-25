@@ -6,9 +6,9 @@ namespace Assets.Scripts.CoreSystem
 {
     public class DamageReceiver : CoreComponent, IDamageable
     {
-        [SerializeField] private GameObject damageParticles;
+        [field: SerializeField] public BodyStatu Health { get; private set; }  // 理解：玩家的生命初始值
 
-        public BodyStatus BodyStatus => BodyStatus ?? core.GetCoreComponent<BodyStatus>();
+        [SerializeField] private GameObject damageParticles;
 
         public ParticleManager ParticleManager => ParticleManager ?? core.GetCoreComponent<ParticleManager>();
 
@@ -23,8 +23,15 @@ namespace Assets.Scripts.CoreSystem
             damageData = DamageModifyManager.ApplyAllModifiers(damageData);
             print($"Damage Amount After Modifiers: {damageData.Amount}");
 
-            BodyStatus.Health.Decrease(damageData.Amount);
+            Health.Decrease(damageData.Amount);
             ParticleManager.StartParticlesWithRandomQuaternion(damageParticles);
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            Health.Init();
         }
     }
 }

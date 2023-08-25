@@ -13,12 +13,12 @@ namespace Assets.Scripts.Player
         [field: SerializeField] private PlayerDataSO playerDataSO;
 
         public Core Core { get; private set; }
-        public BodyStatus BodyStatus { get; private set; }
         public Animator Animator { get; private set; }
         public Rigidbody2D Rigidbody2D { get; private set; }
         public PlayerInputHandler InputHandler { get; private set; }
         public BoxCollider2D MovementCollider { get; private set; }
         public Transform DashDirectionIndicator { get; private set; }
+        public PoiseDamageReceiver PoiseDamageReceiver => PoiseDamageReceiver ?? Core.GetCoreComponent<PoiseDamageReceiver>();
         
         // player states
         public PlayerStateMachine StateMachine { get; private set; }
@@ -35,7 +35,6 @@ namespace Assets.Scripts.Player
         {
             // components
             Core = GetComponentInChildren<Core>();
-            BodyStatus = Core.GetCoreComponent<BodyStatus>();
 
             // player states
             StateMachine = new PlayerStateMachine();
@@ -47,6 +46,24 @@ namespace Assets.Scripts.Player
             secondaryWeapon.SetCore(Core);
 
             StateMachine.AddState(new PlayerIdleState(this, playerDataSO, StateMachine, "idle"));
+            StateMachine.AddState(new PlayerMoveState(this, playerDataSO, StateMachine, "move"));
+            //StateMachine.AddState(new PlayerJumpState(this, playerDataSO, StateMachine, "inAir"));
+            StateMachine.AddState(new PlayerInAirState(this, playerDataSO, StateMachine, "inAir"));
+            //StateMachine.AddState(new PlayerLandState(this, playerDataSO, StateMachine, "land"));
+            //StateMachine.AddState(new PlayerWallSlideState(this, playerDataSO, StateMachine, "wallSlide"));
+            //StateMachine.AddState(new PlayerWallGrabState(this, playerDataSO, StateMachine, "wallGrab"));
+            //StateMachine.AddState(new PlayerWallClimbState(this, playerDataSO, StateMachine, "wallClimb"));
+            StateMachine.AddState(new PlayerWallJumpState(this, playerDataSO, StateMachine, "inAir"));
+            StateMachine.AddState(new PlayerLedgeClimbState(this, playerDataSO, StateMachine, "ledgeClimbState"));
+            //StateMachine.AddState(new PlayerDashState(this, playerDataSO, StateMachine, "inAir"));
+            StateMachine.AddState(new PlayerCrouchIdleState(this, playerDataSO, StateMachine, "crouchIdle"));
+            //StateMachine.AddState(new PlayerCrouchMoveState(this, playerDataSO, StateMachine, "crouchMove"));
+            //StateMachine.AddState(new PlayerAttackState(this, playerDataSO, StateMachine, "idle"));
+            //StateMachine.AddState(new PlayerAttackState(this, playerDataSO, StateMachine, "idle"));
+            //StateMachine.AddState(new PlayerStunState(this, playerDataSO, StateMachine, "stun"));
+
+            //PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
+            //SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
         }
 
         private void Start()
@@ -58,7 +75,7 @@ namespace Assets.Scripts.Player
             InputHandler = GetComponent<PlayerInputHandler>();
             DashDirectionIndicator = transform.Find("DashDirectionIndicator");
 
-            BodyStatus.Poison.OnCurrentValueZero += Poison_OnCurrentValueZero;
+            PoiseDamageReceiver.Poison.OnCurrentValueZero += HandleCurrentValueZero;
 
             StateMachine.Initialize(PlayerStateType.Idle);
         }
@@ -76,7 +93,7 @@ namespace Assets.Scripts.Player
 
         private void OnDestroy()
         {
-            BodyStatus.Poison.OnCurrentValueZero -= Poison_OnCurrentValueZero;
+            PoiseDamageReceiver.Poison.OnCurrentValueZero -= HandleCurrentValueZero;
         }
         #endregion
 
@@ -95,7 +112,7 @@ namespace Assets.Scripts.Player
             MovementCollider.offset = center;
         }
 
-        private void Poison_OnCurrentValueZero()
+        private void HandleCurrentValueZero()
         {
             StateMachine.ChangeState(PlayerStateType.Stun);
         }

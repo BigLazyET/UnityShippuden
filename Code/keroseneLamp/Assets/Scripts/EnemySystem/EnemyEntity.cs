@@ -7,13 +7,13 @@ namespace Assets.Scripts.EnemySystem
     [RequireComponent(typeof(PlayerCheckSense))]
     public class EnemyEntity : MonoBehaviour
     {
-        [field: SerializeField] public MobDataSO MobDataSO { get; private set; }
+        [field: SerializeField] public EnemyDataSO MobDataSO { get; private set; }
 
         public Core Core { get; private set; }
         public Animator Animator { get; private set; }
         public EnemyStateMachine StateMachine { get; private set; }
         public Movement Movement => Movement ?? Core.GetCoreComponent<Movement>();
-        public BodyStatus BodyStatus => BodyStatus ?? Core.GetCoreComponent<BodyStatus>();
+        public PoiseDamageReceiver PoiseDamageReceiver => PoiseDamageReceiver ?? Core.GetCoreComponent<PoiseDamageReceiver>();
         public PlayerCheckSense PlayerCheckSense { get; private set; }
 
         public EntityData entityData;
@@ -38,7 +38,7 @@ namespace Assets.Scripts.EnemySystem
         public virtual void Update()
         {
             Core.LogicUpdate();
-            StateMachine.currentState.LogicUpdate();
+            StateMachine.CurrentState.LogicUpdate();
 
             Animator.SetFloat("yVelocity", Movement.RB.velocity.y); // TODO?
 
@@ -46,7 +46,7 @@ namespace Assets.Scripts.EnemySystem
                 ResetStunResistance();
         }
 
-        public virtual void FixedUpdate() => StateMachine.currentState.PhysicsUpdate();
+        public virtual void FixedUpdate() => StateMachine.CurrentState.PhysicsUpdate();
 
         /// <summary>
         /// 伤害跳跃

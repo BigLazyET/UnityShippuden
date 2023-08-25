@@ -4,17 +4,18 @@ using UnityEngine;
 
 namespace Assets.Scripts.EnemySystem
 {
-    public class EnemyState
+    public abstract class EnemyState
     {
-        protected MobDataSO mobDataSO;
+        protected EnemyDataSO mobDataSO;
         protected EnemyEntity enemyEntity;
         protected EnemyStateMachine stateMachine;
         protected string animBoolName;
         protected Core core;
 
         public float StartTime { get; protected set; }
+        public abstract EnemyStateType EnemyStateType { get; }
 
-        public EnemyState(EnemyEntity enemyEntity, MobDataSO mobDataSO, EnemyStateMachine stateMachine, string animBoolName)
+        public EnemyState(EnemyEntity enemyEntity, EnemyDataSO mobDataSO, EnemyStateMachine stateMachine, string animBoolName)
         {
             this.enemyEntity = enemyEntity;
             this.mobDataSO = mobDataSO;
@@ -44,15 +45,15 @@ namespace Assets.Scripts.EnemySystem
 
     public abstract class EnemyState<T> : EnemyState where T : EnemyComponentData
     {
-        protected T data;
+        protected T stateData;
 
-        protected EnemyState(EnemyEntity enemyEntity, MobDataSO mobDataSO, EnemyStateMachine stateMachine, string animBoolName) : base(enemyEntity, mobDataSO, stateMachine, animBoolName)
+        protected EnemyState(EnemyEntity enemyEntity, EnemyDataSO mobDataSO, EnemyStateMachine stateMachine, string animBoolName) : base(enemyEntity, mobDataSO, stateMachine, animBoolName)
         {
         }
 
         public override void Enter()
         {
-            data = mobDataSO.GetData<T>();
+            stateData = mobDataSO.GetData<T>();
 
             base.Enter();
         }

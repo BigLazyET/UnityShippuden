@@ -6,18 +6,18 @@ namespace Assets.Scripts.CoreSystem
     {
         [SerializeField] private GameObject[] deathParticles;
 
-        public BodyStatus BodyStatus => BodyStatus ?? core.GetCoreComponent<BodyStatus>();
+        public DamageReceiver DamageReceiver => DamageReceiver ?? core.GetCoreComponent<DamageReceiver>();
 
         public ParticleManager ParticleManager => ParticleManager ?? core.GetCoreComponent<ParticleManager>();
 
         private void OnEnable()
         {
-            BodyStatus.Health.OnCurrentValueZero += HandleCurrentValueZero;
+            DamageReceiver.Health.OnCurrentValueZero += HandleCurrentValueZero;
         }
 
         private void OnDisable()
         {
-            BodyStatus.Health.OnCurrentValueZero -= HandleCurrentValueZero;
+            DamageReceiver.Health.OnCurrentValueZero -= HandleCurrentValueZero;
         }
 
         private void HandleCurrentValueZero()

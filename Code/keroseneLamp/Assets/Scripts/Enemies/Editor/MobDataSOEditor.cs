@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Enemies
 {
-    [CustomEditor(typeof(MobDataSO))]
+    [CustomEditor(typeof(EnemyDataSO))]
     public class MobDataSOEditor : Editor
     {
         public ReorderableList datas;

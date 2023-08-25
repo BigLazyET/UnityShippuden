@@ -49,7 +49,7 @@ namespace Assets.Scripts.ProjectileSystem
 
                 if (!hit.collider.transform.gameObject.TryGetComponentInChildren(out IPoisonable component)) continue;
 
-                component.Poison(new PoisonData(amount, projectile.gameObject));
+                component.PoisonDamage(new PoisonData(amount, projectile.gameObject));
 
                 OnPoiseDamage?.Invoke(component);
 

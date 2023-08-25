@@ -1,11 +1,13 @@
 ﻿using Assets.Scripts.Combat;
 using Assets.Scripts.ModifierSystem;
+using UnityEngine;
 
 namespace Assets.Scripts.CoreSystem
 {
     public class PoiseDamageReceiver : CoreComponent, IPoisonable
     {
-        private BodyStatus bodyStatus;
+        [field: SerializeField] public BodyStatu Poison { get; private set; }  // 理解：玩家的耐毒初始值，当耐毒值归零后，玩家处于晕厥状态Stun
+        [field: SerializeField] public float PoisonRecoveryRate { get; private set; }
 
         public ModifyManager<Modifier<PoisonData>, PoisonData> PoiseDamageModifyManager => new();
 
@@ -13,14 +15,21 @@ namespace Assets.Scripts.CoreSystem
         {
             base.Awake();
 
-            bodyStatus = core.GetCoreComponent<BodyStatus>();
+            Poison.Init();
         }
 
-        public void Poison(PoisonData poisonData)
+        private void Update()
+        {
+            if (Poison.CurrentValue.Equals(Poison.MaxValue)) return;
+
+            Poison.Increase(PoisonRecoveryRate * Time.deltaTime);
+        }
+
+        public void PoisonDamage(PoisonData poisonData)
         {
             poisonData = PoiseDamageModifyManager.ApplyAllModifiers(poisonData);
 
-            bodyStatus.Poison.Decrease(poisonData.Amount);
+            Poison.Decrease(poisonData.Amount);
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IPoisonable
     {
-        void Poison(PoisonData poisonData);
+        void PoisonDamage(PoisonData poisonData);
     }
 }

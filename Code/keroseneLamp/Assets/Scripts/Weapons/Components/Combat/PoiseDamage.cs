@@ -28,7 +28,7 @@ namespace Assets.Scripts.Weapons
             {
                 if(collider.gameObject.TryGetComponentInChildren(out IPoisonable poisonable))
                 {
-                    poisonable.Poison(new PoisonData(currentAttackData.Amount, weapon.Core.Root));
+                    poisonable.PoisonDamage(new PoisonData(currentAttackData.Amount, weapon.Core.Root));
                 }
             }
         }

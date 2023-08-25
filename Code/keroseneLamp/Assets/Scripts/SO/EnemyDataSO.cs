@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.Scripts.SO
 {
     [CreateAssetMenu(fileName = "mobData", menuName = "Data/Enemy Data/Mob Data")]
-    public class MobDataSO : ScriptableObject
+    public class EnemyDataSO : ScriptableObject
     {
         private IList<EnemyComponentData> ComponentData = new List<EnemyComponentData>();
 
