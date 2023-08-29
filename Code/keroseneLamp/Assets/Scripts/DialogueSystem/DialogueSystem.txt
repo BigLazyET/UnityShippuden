@@ -1,2 +1,13 @@
 ﻿# Dialogue System
 
+## 一、Fungus
+
+https://github.com/snozbot/fungus/wiki
+https://docs.qq.com/doc/DSHZ2dW5RZmJuWFJX
+
+## 二、Ink
+https://www.inklestudios.com/ink/
+https://assetstore.unity.com/packages/tools/integration/ink-integration-for-unity-60055#description
+
+## 三、Ink-Fungus Gateway Template
+https://github.com/maurovanetti/inkfungus-template
