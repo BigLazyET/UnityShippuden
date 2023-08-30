@@ -24,3 +24,14 @@ https://github.com/IronWarrior/UnityCameraShake
 https://zhuanlan.zhihu.com/p/29387185?from_voters_page=true
 https://zhuanlan.zhihu.com/p/360236389
 https://bbs.csdn.net/topics/607156115
+
+## 视差效果
+https://gist.github.com/maxhacker11/32df488c53a3c02bcec8dce5f0c5c279
+
+* 创建一个新的游戏对象并将其命名为“Level”
+* 将所有图层添加为子图层
+* 将 ParallaxLayer 脚本附加到所有图层
+* 设置值，使后面的山脉为正值，距离相机越远，增加......而前景元素，距离相机越近，增加负值
+* 将 ParallaxCamera 组件附加到您的相机
+* 将 ParallaxBackground 组件附加到我们之前创建的关卡游戏对象。
+* 在游戏中享受新的视差滚动背景效果！
